@@ -98,11 +98,7 @@ async def get_search_results(query, file_type=None, max_results=(MAX_RIST_BTNS),
 
     cursor = Media.find(filter)
     # Sort by recent
-    print(cursor)
-    if not query:
-        cursor.sort('$natural', -1)
-    else:
-        cursor.sort('file_name')
+    cursor.sort('$natural', -1)
     # Slice files according to offset and max results
     cursor.skip(offset).limit(max_results)
     # Get list of files
